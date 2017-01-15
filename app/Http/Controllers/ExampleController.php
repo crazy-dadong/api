@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use Redis;
 
 class ExampleController extends Controller
 {
@@ -19,8 +20,9 @@ class ExampleController extends Controller
 
     public function index()
     {
-        $now = Carbon::now();
+        $redis = new Redis();
+        $redis->connect('127.0.0.1', 6379);
 //        abort(404, '就是没找到，你能怎么地');
-        return $now;
+        return '1';
     }
 }
